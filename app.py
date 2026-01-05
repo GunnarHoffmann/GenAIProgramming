@@ -1,7 +1,9 @@
 import streamlit as st
 import random
+import os
 
-st.markdown("<h1 style='text-align: center; color: #FF0000;'>🎲 Square Guessing Game 🎲</h1>", unsafe_allow_html=True)
+# Titel in Blau
+st.markdown("<h1 style='text-align: center; color: #0000FF;'>🎲 Square Guessing Game 🎲</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 18px;'>Guess the square of a random number between 0 and 50!</p>", unsafe_allow_html=True)
 
 if 'number' not in st.session_state:
@@ -18,6 +20,20 @@ if st.session_state.show_success:
     st.session_state.show_success = False
 
 st.markdown(f"<h2 style='text-align: center;'>What is the square of <span style='color: #FF5722;'>{st.session_state.number}</span>?</h2>", unsafe_allow_html=True)
+
+# Cache-busting: verwende die Dateimodifikationszeit von this file als Version
+APP_VERSION = str(int(os.path.getmtime(__file__)))
+js = f"""
+<script>
+const serverVersion = '{APP_VERSION}';
+const params = new URLSearchParams(window.location.search);
+if (params.get('v') !== serverVersion) {
+    params.set('v', serverVersion);
+    window.location.search = params.toString();
+}
+</script>
+"""
+st.components.v1.html(js, height=0)
 
 guess = st.number_input("Enter your guess:", value=st.session_state.guess, step=1.0, min_value=0.0)
 
