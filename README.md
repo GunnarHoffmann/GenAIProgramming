@@ -1,6 +1,6 @@
 # GenAIProgramming
 
-This repository contains a Streamlit app that is a square guessing game. The app displays a random number between 0 and 100, and the user must guess its square.
+This repository contains a Streamlit app that is a fancy square guessing game. The app displays a random number between 0 and 50, and the user must guess its square. It features a colorful interface and options to check guesses or start a new game.
 
 ## Installation
 
