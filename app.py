@@ -3,7 +3,7 @@ import random
 import os
 
 # Titel in Blau
-st.markdown("<h1 style='text-align: center; color: #0000FF;'>🎲 Square Guessing Game 🎲</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center; color: #00ff00;'>🎲 Square Guessing Game 🎲</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 18px;'>Guess the square of a random number between 0 and 50!</p>", unsafe_allow_html=True)
 
 if 'number' not in st.session_state:
