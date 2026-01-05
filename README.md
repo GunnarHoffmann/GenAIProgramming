@@ -1,6 +1,6 @@
 # GenAIProgramming
 
-This repository contains a simple Streamlit app that allows users to enter a number and calculates its square.
+This repository contains a Streamlit app that is a square guessing game. The app displays a random number between 0 and 100, and the user must guess its square.
 
 ## Installation
 
@@ -16,4 +16,4 @@ To run the Streamlit app, execute the following command:
 streamlit run app.py
 ```
 
-This will start the app on `http://localhost:8501` by default. Open your browser and navigate to that URL to enter a number and see its square.
+This will start the app on `http://localhost:8501` by default. Open your browser and navigate to that URL to play the game.
