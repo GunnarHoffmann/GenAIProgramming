@@ -7,6 +7,13 @@ st.markdown("<p style='text-align: center; font-size: 18px;'>Guess the square of
 if 'number' not in st.session_state:
     st.session_state.number = random.randint(0, 50)
 
+if 'show_success' not in st.session_state:
+    st.session_state.show_success = False
+
+if st.session_state.show_success:
+    st.success(f"🎉 Correct! The square of {st.session_state.last_number} is {st.session_state.last_square}.")
+    st.session_state.show_success = False
+
 st.markdown(f"<h2 style='text-align: center;'>What is the square of <span style='color: #FF5722;'>{st.session_state.number}</span>?</h2>", unsafe_allow_html=True)
 
 guess = st.number_input("Enter your guess:", value=0.0, step=1.0, min_value=0.0)
@@ -17,7 +24,9 @@ with col1:
     if st.button("Check Guess", key="check"):
         correct_square = st.session_state.number ** 2
         if guess == correct_square:
-            st.success(f"🎉 Correct! The square of {st.session_state.number} is {correct_square}.")
+            st.session_state.last_number = st.session_state.number
+            st.session_state.last_square = correct_square
+            st.session_state.show_success = True
             st.session_state.number = random.randint(0, 50)
             st.rerun()
         else:
