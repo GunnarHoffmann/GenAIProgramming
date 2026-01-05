@@ -23,16 +23,16 @@ st.markdown(f"<h2 style='text-align: center;'>What is the square of <span style=
 
 # Cache-busting: verwende die Dateimodifikationszeit von this file als Version
 APP_VERSION = str(int(os.path.getmtime(__file__)))
-js = f"""
-<script>
-const serverVersion = '{APP_VERSION}';
-const params = new URLSearchParams(window.location.search);
-if (params.get('v') !== serverVersion) {
-    params.set('v', serverVersion);
-    window.location.search = params.toString();
-}
-</script>
-"""
+js = (
+    "<script>\n"
+    "const serverVersion = '" + APP_VERSION + "';\n"
+    "const params = new URLSearchParams(window.location.search);\n"
+    "if (params.get('v') !== serverVersion) {\n"
+    "  params.set('v', serverVersion);\n"
+    "  window.location.search = params.toString();\n"
+    "}\n"
+    "</script>\n"
+)
 st.components.v1.html(js, height=0)
 
 guess = st.number_input("Enter your guess:", value=st.session_state.guess, step=1.0, min_value=0.0)
